@@ -9,12 +9,12 @@ import EmailIcon from '../assets/icons/EmailIcon';
 
 const CardPage = () => {
     const { id } = useParams<{ id: string }>();
-    const [card, setCard] = useState<ICard>({});
+    const [card, setCard] = useState<Partial<ICard>>({});
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userData = await getUser(id);
+                const userData = await getUser(id!);
                 setCard(userData.data);
             } catch (error) {
                 console.error('Error fetching user data:', error);
@@ -29,7 +29,7 @@ const CardPage = () => {
     return (
         <>
             <HeadLayout>
-                <HeadCard {...card} />
+                <HeadCard {...(card as ICard)} />
             </HeadLayout>
             <div className="max-w-[1000px] mx-auto lg:mt-12 px-4 md:px-6 py-8 flex gap-8 flex-wrap-reverse justify-between">
                 <div className="max-w-[630px] w-full flex flex-col gap-[30px]">
