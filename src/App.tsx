@@ -2,7 +2,7 @@ import AppRouter from './components/AppRouter';
 
 const App = () => {
     return (
-        <div className="h-screen w-screen font-regular">
+        <div className="font-regular">
             <AppRouter />
         </div>
     );
